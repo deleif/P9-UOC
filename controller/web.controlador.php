@@ -79,13 +79,20 @@ class WebControlador{
 
         $prodsel = new Productos();
 
-        if(isset($_REQUEST['id_producto'])){
-            $prodsel = $this->productos->ObtenerProducto($_REQUEST['id_producto']);
-        }
+        if(isset($_SESSION["nombre_usuario"])){
         
-        require_once 'view/header.php';
-        require_once 'view/Contenido/vista_valora_producto.php';
-        require_once 'view/footer.php';
+            if(isset($_REQUEST['id_producto'])){
+                $prodsel = $this->productos->ObtenerProducto($_REQUEST['id_producto']);
+            }
+            
+            require_once 'view/header.php';
+            require_once 'view/Contenido/vista_valora_producto.php';
+            require_once 'view/footer.php';
+        }
+
+        else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
     }
     
 
