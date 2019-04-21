@@ -32,7 +32,7 @@
 </table> 
 
 
-<img src="/imagenes/logo.png" />
+
 
 
 
