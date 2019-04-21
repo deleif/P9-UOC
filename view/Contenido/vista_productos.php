@@ -1,38 +1,39 @@
 <h1 class="page-header">Productos</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th>Categoria</th>
-			<th>Producto</th>
-            <th>Descripcion</th>
-            <th style="width:120px;">Imagen</th>
-            <th style="width:120px;">Número de votos</th>
-			<th style="width:120px;">Puntuación total</th>
-			<th style="width:120px;">Puntuación media</th>
-        </tr>
-    </thead>
-    <tbody>
+<div class="row">
+<?php foreach($this->productos->ListarProductos() as $r): ?>
 
-    <?php foreach($this->productos->ListarProductos() as $r): ?>
+  <div class="col-sm-3" >
+  <br>
+  <div class="card" style="width: 18rem;">  
+  <div class="card-body">
+
+  <h5 class="card-title"><?php echo $r->id_categoria; ?></h5>
+  <h6 class="card-subtitle mb-2 text-muted"><?php echo $r->nombre_producto; ?></h6>
+    
+    <table class="table  ">
+    <tbody>    
+
         <tr>
-            <td><?php echo $r->id_categoria; ?></td>
-            <td><?php echo $r->nombre_producto; ?></td>
             <td><?php echo $r->descripcion_producto; ?></td>		
+        </tr>
+        <tr>
             <td><img src="<?php echo $r->ruta_foto;?>" alt="" /></td>
-			<td><?php echo $r->num_votos; ?></td>
-			<td><?php echo $r->puntos_total; ?></td>
-			<td><?php echo $r->puntos_media; ?></td>
+        </tr>
+        <tr>
+			<td>Votos: <?php echo $r->num_votos; ?> | Puntos: <?php echo $r->puntos_total; ?> | Media: <?php echo $r->puntos_media; ?></td>
+        </tr>
+        <tr>
             <td>
                 <a href="?c=Web&a=ValorarProducto&id_producto=<?php echo $r->id_producto; ?>">Valorar</a>
             </td>
-        </tr>
-    <?php endforeach; ?>
-    </tbody>
-</table> 
+        </tr>   
+        </tbody>
+    </table>
+    </div> 
+    </div> 
+</div> 
 
+<?php endforeach; ?>
 
-
-
-
-
+</div>  
