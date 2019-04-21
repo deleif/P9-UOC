@@ -3,7 +3,7 @@
 <div class="row">
 <?php foreach($this->productos->ListarProductos() as $r): ?>
 
-  <div class="col-sm-4" >
+  <div class="col-xl-3 col-lg-4 col-md-2 col-sm-12 col-sm-12"  >
   <br>
   <div class="card" style="width: 18rem;">  
   <div class="card-body">

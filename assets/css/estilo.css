@@ -5,6 +5,7 @@
     margin-top: 5%;
     margin-right: auto;
     margin-left: auto;
+
 }
 
 #cabecera {
@@ -45,7 +46,9 @@
 }
 
 .row {
+
 	margin-top: 20px !important;
+	padding: 5px;
 
 }
 
