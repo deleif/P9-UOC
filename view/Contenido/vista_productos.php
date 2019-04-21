@@ -24,13 +24,12 @@
 			<td><?php echo $r->puntos_total; ?></td>
 			<td><?php echo $r->puntos_media; ?></td>
             <td>
-                <a onclick="javascript:return confirm('¿Seguro que desea valorar este producto?');" href="?c=Productos&a=valorar&id=<?php echo $r->id; ?>">Valorar</a>
+                <a href="?c=Web&a=ValorarProducto&id_producto=<?php echo $r->id_producto; ?>">Valorar</a>
             </td>
         </tr>
     <?php endforeach; ?>
     </tbody>
 </table> 
-
 
 
 

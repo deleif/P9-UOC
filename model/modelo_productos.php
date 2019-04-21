@@ -47,6 +47,23 @@ require_once 'model/conexion.php';
             }
         }
 
+
+        public function ObtenerProducto($id_producto)
+        {
+            try 
+            {                
+                $stm = $this->pdo->prepare("SELECT a.id_producto, b.descripcion_categoria as id_categoria, a.nombre_producto, a.descripcion_producto, a.ruta_foto, a.num_votos, a.puntos_total, a.puntos_media 
+                FROM productos a 
+                inner join categorias b where a.id_categoria = b.id_categoria and id_producto = '$id_producto' " );
+    
+                $stm->execute(array($id_producto));
+                return $stm->fetch(PDO::FETCH_OBJ);
+            } catch (Exception $e) 
+            {
+                die($e->getMessage());
+            }
+        }
+
     }
 
 ?>

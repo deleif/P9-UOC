@@ -3,9 +3,6 @@
 require_once 'model/modelo_usuarios.php';
 require_once 'model/modelo_productos.php';		
 
-
-
-
 class WebControlador{
 	
     private $usuario;
@@ -48,11 +45,7 @@ class WebControlador{
     public function Crud(){
 
         $prod = new Productos();
-
-        if(isset($_REQUEST['id'])){
-            $prod = $this->productos->Obtener($_REQUEST['id']);
-        }
-        
+      
         require_once 'view/header.php';
         require_once 'view/Contenido/vista_productos.php';
         require_once 'view/footer.php';
@@ -79,6 +72,20 @@ class WebControlador{
 		
 		$this->usuario->Validar($user);
 
+    }
+
+
+    public function ValorarProducto(){
+
+        $prodsel = new Productos();
+
+        if(isset($_REQUEST['id_producto'])){
+            $prodsel = $this->productos->ObtenerProducto($_REQUEST['id_producto']);
+        }
+        
+        require_once 'view/header.php';
+        require_once 'view/Contenido/vista_valora_producto.php';
+        require_once 'view/footer.php';
     }
     
 
