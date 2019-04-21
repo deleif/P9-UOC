@@ -8,8 +8,8 @@
   <div class="card" style="width: 18rem;">  
   <div class="card-body">
 
-  <h5 class="card-title"><?php echo $r->id_categoria; ?></h5>
-  <h6 class="card-subtitle mb-2 text-muted"><?php echo $r->nombre_producto; ?></h6>
+  <h5 class="card-title"><?php echo $r->nombre_producto; ?></h5>
+  <h6 class="card-subtitle mb-2 text-muted"><?php echo $r->id_categoria; ?></h6>
     
     <table class="table  ">
     <tbody>    
