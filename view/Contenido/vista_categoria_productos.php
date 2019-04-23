@@ -3,7 +3,7 @@
 <div class="row">
 <?php foreach($this->productos->ObtenerProductoCategoria($_REQUEST['id_categoria']) as $r): ?>
 
-<div class=".col-lg-auto "  >
+<div class=".col-lg-auto col-centrada"  >
   <br>
   <div class="card" style="width: 18rem;">  
   <div class="card-body">

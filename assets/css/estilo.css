@@ -48,12 +48,17 @@
 .row {
 
 	margin-top: 20px !important;
-
 }
 
 .card
 {
-	background-color: #FEFFEE;	
+	background-color: #FEFFEE !important;	
 	height: auto;
 	margin: 10px;
+}
+
+
+.col-centrada{
+    float: none;
+    margin: 0 auto;
 }
