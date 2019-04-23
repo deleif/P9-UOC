@@ -1,7 +1,7 @@
 <h1 class="page-header">Productos</h1>
 
 <div class="row">
-<?php foreach($this->productos->ObtenerProductoCategoria() as $r): ?>
+<?php foreach($this->productos->ListarProductos() as $r): ?>
 
   <div class=".col-lg-auto "  >
   <br>
