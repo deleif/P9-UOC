@@ -67,8 +67,8 @@ class WebControlador{
 		
 		$user = new Usuario();
 		
-		$user->nombre_usuario = $_REQUEST['nombre_usuario'];
-		$user->password_usuario = $_REQUEST['password_usuario'];
+        $user->nombre_usuario = $_REQUEST['nombre_usuario'];
+        $user->password_usuario = $_REQUEST['password_usuario'];        
 		
 		$this->usuario->Validar($user);
 
@@ -93,6 +93,80 @@ class WebControlador{
         else {
 			header("Location: index.php?c=Web&a=Login_usuario");
 		}
+    }
+
+    public function Admin(){
+
+        $user = new Usuario();
+
+        if ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			require_once 'view/header.php';
+			require_once 'view/Contenido/vista_admin.php';
+			require_once 'view/footer.php';
+		}
+
+		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			echo "Necesitas ser Goku o el Administrador de la web para acceder";
+		}
+
+		
+		else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
+    }
+
+    public function Administracion(){
+
+        $user = new Usuario();
+
+        if ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			require_once 'view/header.php';
+			require_once 'view/Contenido/vista_administracion.php';
+			require_once 'view/footer.php';
+		}
+
+		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			echo "Necesitas ser Goku o el Administrador de la web para acceder";
+		}
+
+		
+		else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
+    }
+
+
+    public function Editar_Usuario(){
+
+        $user = new Usuario();
+        
+        if(isset($_REQUEST['id_usuario'])){
+            $user = $this->usuario->Obtener_usuario($_REQUEST['id_usuario']);
+        }
+        
+        require_once 'view/header.php';
+        require_once 'view/Contenido/vista_editar_usuario.php';
+        require_once 'view/footer.php';
+
+    }
+
+    public function Guardar_Usuario(){
+
+        $user = new Usuario();
+        
+        $user->id_nivel = $_REQUEST['id_nivel'];
+        $user->nombre_usuario = $_REQUEST['nombre_usuario'];
+        $user->password_usuario = $_REQUEST['password_usuario'];
+        $user->id_usuario = $_REQUEST['id_usuario'];
+
+        $this->usuario->Actualizar_usuario($user);
+        
+        header("Location: index.php?c=Web&a=Administracion");
+
     }
     
 

@@ -9,6 +9,8 @@ class Usuario{
 	
 	public $nombre_usuario;
 	public $password_usuario;
+	public $id_nivel;
+	public $id_usuario;
 	
 	public function __CONSTRUCT(){
 		try{
@@ -60,6 +62,55 @@ class Usuario{
 		}else{
 			echo "Usuario no registrado.";  
 		} 
+	}
+
+	public function Listar_usuarios(){
+		try{
+			$result = array();
+			$sql = $this->pdo->prepare("SELECT * FROM usuario");
+			$sql->execute();
+			return $sql->fetchAll(PDO::FETCH_OBJ);
+		}catch(Exception $e){
+			die($e->getMessage());
+		}
+	}
+
+
+	public function Obtener_usuario($id_usuario){
+
+		try{
+			$sql = $this->pdo
+			    ->prepare("SELECT * FROM usuario WHERE id_usuario = ?");         
+				$sql->execute(array($id_usuario));
+			return $sql->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+
+	}
+
+	public function Actualizar_usuario($data){
+
+		try{
+			$sql = "UPDATE usuario SET 
+						id_nivel = ?, 
+						nombre_usuario = ?,
+                        password_usuario = ?
+				    WHERE id_usuario = ?";
+
+			$this->pdo->prepare($sql)
+			     ->execute(
+				    array(
+                        $data->id_nivel, 
+                        $data->nombre_usuario,
+                        $data->password_usuario,
+                        $data->id_usuario
+					)
+				);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+
 	}
 	
 
