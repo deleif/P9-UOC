@@ -1,15 +1,16 @@
-<h1 class="page-header"><?php echo $r->descripcion_categoria; ?></h1>
+
 
 <div class="row">
-<?php foreach($this->categorias->VerProductosCategorias() as $r): ?>
+<?php foreach($this->productos->ObtenerProductoCategoria($_REQUEST['id_categoria']) as $r): ?>
 
-  <div class=".col-lg-auto "  >
+<div class=".col-lg-auto "  >
   <br>
   <div class="card" style="width: 18rem;">  
   <div class="card-body">
 
   <h5 class="card-title"><?php echo $r->nombre_producto; ?></h5>
   <h6 class="card-subtitle mb-2 text-muted"><?php echo $r->descripcion_categoria; ?></h6>
+
     
     <table class="table  ">
     <tbody>    

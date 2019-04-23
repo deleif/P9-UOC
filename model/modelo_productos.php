@@ -37,8 +37,7 @@ require_once 'model/conexion.php';
                 FROM productos a 
                 inner join categorias b where a.id_categoria = b.id_categoria");
 
-                $stm->execute();
-    
+                $stm->execute();    
                 return $stm->fetchAll(PDO::FETCH_OBJ);
             }
             catch(Exception $e)
@@ -64,9 +63,29 @@ require_once 'model/conexion.php';
             }
         }
 
+
+        public function ObtenerProductoCategoria($id_categoria)
+        {
+            try 
+            {                
+                $stm = $this->pdo->prepare("SELECT a.id_producto, b.descripcion_categoria as descripcion_categoria, a.nombre_producto, a.descripcion_producto, a.ruta_foto, a.num_votos, a.puntos_total, a.puntos_media 
+                FROM productos a 
+                inner join categorias b where a.id_categoria = b.id_categoria and a.id_categoria = '$id_categoria' ");
+    
+                $stm->execute();    
+                return $stm->fetchAll(PDO::FETCH_OBJ);
+
+            } 
+            catch (Exception $e) 
+            {
+                die($e->getMessage());
+            }
+        }
+
     }
 
 ?>
+
 
 
   

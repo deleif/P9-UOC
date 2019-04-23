@@ -21,7 +21,7 @@ class WebControlador{
     
     public function Index(){
 		
-        $categorias = new Categorias();
+        $productos = new Productos();
 
         require_once 'view/header.php';
         require_once 'view/Contenido/home.php';
@@ -181,6 +181,27 @@ class WebControlador{
 		
 		$this->cat->ListarTipoCategorias();
     }
+
+
+    public function VerProductosCategorias(){
+
+        $prodcatsel = new Productos();
+  
+
+        
+        if(isset($_REQUEST['id_categoria'])){
+            $prodcatsel = $this->productos->ObtenerProductoCategoria($_REQUEST['id_categoria']);           
+            
+        require_once 'view/header.php';
+        require_once 'view/Contenido/vista_categoria_productos.php';
+        require_once 'view/footer.php';
+ 
+        }
+        else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
+    }
+
 
     
 
