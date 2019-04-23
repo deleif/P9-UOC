@@ -1,7 +1,7 @@
-<h1 class="page-header">Productos</h1>
+<h1 class="page-header"><?php echo $r->descripcion_categoria; ?></h1>
 
 <div class="row">
-<?php foreach($this->productos->ListarProductos() as $r): ?>
+<?php foreach($this->categorias->VerProductosCategorias() as $r): ?>
 
   <div class=".col-lg-auto "  >
   <br>
@@ -9,7 +9,7 @@
   <div class="card-body">
 
   <h5 class="card-title"><?php echo $r->nombre_producto; ?></h5>
-  <h6 class="card-subtitle mb-2 text-muted"><?php echo $r->id_categoria; ?></h6>
+  <h6 class="card-subtitle mb-2 text-muted"><?php echo $r->descripcion_categoria; ?></h6>
     
     <table class="table  ">
     <tbody>    

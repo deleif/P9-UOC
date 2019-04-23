@@ -48,12 +48,12 @@
 .row {
 
 	margin-top: 20px !important;
-	padding: 5px;
 
 }
 
-.card-body
+.card
 {
 	background-color: #FEFFEE;	
 	height: auto;
+	margin: 10px;
 }

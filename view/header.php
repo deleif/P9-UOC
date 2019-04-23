@@ -30,18 +30,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href='?c=Web&a=Crud'">Productos <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pale Lager <span class="sr-only">(current)</span></a>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="?c=Web&a=ListarTipoCategorias" id="navbardrop" data-toggle="dropdown">Categorías</a>
+                    <div class="dropdown-menu">
+                        <?php foreach($this->categorias->ListarTipoCategorias() as $r): ?>
+                            <a class="dropdown-item" href="?c=Web&a=VerProductosCategorias&id_categoria=<?php echo $r->id_categoria; ?> "><?php echo $r->descripcion_categoria; ?></a>
+                        <?php endforeach; ?>                  
+                    </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pilsner <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Pale Ale <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
+
+
                     <li class="nav-item">
                         <a class="nav-link" href = '?c=Web&a=Admin'>Administración<span class="sr-only">(current)</span></a>
                     </li>

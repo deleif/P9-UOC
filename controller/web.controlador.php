@@ -1,23 +1,28 @@
 <?php
 
 require_once 'model/modelo_usuarios.php';
-require_once 'model/modelo_productos.php';		
+require_once 'model/modelo_productos.php';
+require_once 'model/modelo_categorias.php';			
 
 class WebControlador{
 	
     private $usuario;
     private $productos;
+    private $categorias;
     
 
 	public function __CONSTRUCT(){
 		
     $this->usuario= new Usuario();
     $this->productos= new productos();
+    $this->categorias= new Categorias();
 
     }
     
     public function Index(){
 		
+        $categorias = new Categorias();
+
         require_once 'view/header.php';
         require_once 'view/Contenido/home.php';
         require_once 'view/footer.php';
@@ -168,6 +173,15 @@ class WebControlador{
         header("Location: index.php?c=Web&a=Administracion");
 
     }
+
+
+    public function ListarMenuCategorias(){
+		
+		$cat = new Categorias();
+		
+		$this->cat->ListarTipoCategorias();
+    }
+
     
 
 
