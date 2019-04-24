@@ -46,6 +46,27 @@ require_once 'model/conexion.php';
             }
         }
 
+        public function Nuevo_prod(Productos $data){
+
+            try {                
+                $sql = "INSERT INTO productos (id_categoria,nombre_producto,descripcion_producto,ruta_foto) 
+                VALUES (?,?,?,?)";
+                        
+                $this->pdo->prepare($sql)
+                    ->execute(
+                        array(
+                            $data->id_categoria,
+                            $data->nombre_producto,
+                            $data->descripcion_producto,
+                            $data->ruta_foto
+                        )
+                    );
+                } catch (Exception $e) {    
+                    echo "Error al crear el producto<br>";
+                    die($e->getMessage());
+                }
+        }
+
 
         public function ObtenerProducto($id_producto)
         {
@@ -78,6 +99,52 @@ require_once 'model/conexion.php';
             } 
             catch (Exception $e) 
             {
+                die($e->getMessage());
+            }
+        }
+
+        public function Obtener_prod($id_producto){
+
+            try{ 
+                $sql = $this->pdo->prepare("SELECT * FROM productos WHERE id_producto = ?");
+                $sql->execute(array($id_producto));
+                return $sql->fetch(PDO::FETCH_OBJ);
+            } catch (Exception $e) {
+                die($e->getMessage());
+            }
+    }
+
+    public function Modificar_prod($data){
+
+        try{
+                $sql = "UPDATE productos SET 
+                    id_categoria = ?, 
+                    nombre_producto = ?,
+                    descripcion_producto = ?,
+                    ruta_foto = ?
+                WHERE id_producto = ?";
+
+            $this->pdo->prepare($sql)
+                ->execute(
+                    array(
+                        $data->id_categoria, 
+                        $data->nombre_producto,
+                        $data->descripcion_producto,
+                        $data->ruta_foto,
+                        $data->id_producto
+                    )
+                );
+            } catch (Exception $e) {
+                die($e->getMessage());
+                }
+    }
+
+    public function Eliminar_prod($id_producto){
+
+            try{
+                $sql = $this->pdo->prepare("DELETE FROM productos WHERE id_producto = ?");			          
+                $sql->execute(array($id_producto));
+            } catch (Exception $e){
                 die($e->getMessage());
             }
         }

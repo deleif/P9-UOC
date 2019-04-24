@@ -1,0 +1,37 @@
+<h1>EDITAR PRODUCTO</h1>
+<h2><?php echo $prod->nombre_producto; ?></h2>
+<h2>ID pRODUCTO: <?php echo $prod->id_producto; ?></h2>
+
+<form action="?c=Web&a=Actualizar_producto" method="post" enctype="multipart/form-data">
+<input type="hidden" name="id_producto" value="<?php echo $prod->id_producto; ?>" />    
+    
+    <div class="form-group">
+        <label>Categoría</label>
+        <select name="id_categoria" value="<?php echo $prod->id_categoria; ?>" class="form-control" placeholder="Ingrese su categoría">
+                <option value="1">Pale Lager</option>
+                <option value="2">Pilsner</option>
+                <option value="3">Pale Ale</option>
+            </select>    
+    </div>
+
+    <div class="form-group">
+        <label>Nombre del producto</label>
+        <input type="text" name="nombre_producto" value="<?php echo $prod->nombre_producto; ?>" class="form-control" placeholder="Ingrese el nombre del producto" data-validacion-tipo="requerido|min:3" />
+    </div>
+
+    <div class="form-group">
+        <label>Descripcion del producto</label>
+        <input type="text" name="descripcion_producto" value="<?php echo $prod->descripcion_producto; ?>" class="form-control" placeholder="Descripción del producto" data-validacion-tipo="requerido|min:3" />
+    </div>
+
+    <div class="form-group">
+    <label>Imagen</label><br>
+        
+        <img src="<?php echo $prod->ruta_foto; ?>">
+        <input type="file" id = "ruta_foto" name="ruta_foto" accept="image/png, image/jpeg" value="<?php echo $prod->ruta_foto; ?>" class="form-control" />
+    </div>
+        
+    <div class="text-right">
+        <button class="btn btn-success">Actualizar</button>
+    </div>
+</form>

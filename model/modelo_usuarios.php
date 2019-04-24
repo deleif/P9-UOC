@@ -132,6 +132,16 @@ class Usuario{
 	}
 	
 	}
+
+	public function Eliminar_user($id_usuario){
+
+		try{
+			$sql = $this->pdo->prepare("DELETE FROM usuario WHERE id_usuario = ?");			          
+			$sql->execute(array($id_usuario));
+		} catch (Exception $e){
+			die($e->getMessage());
+		}
+	}
 	
 
 	

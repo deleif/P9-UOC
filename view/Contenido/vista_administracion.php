@@ -1,6 +1,6 @@
 <h1>ADMINISTRACION</h1><br><hr>
 
-<h4>LISTA DE USUARIOS</h4>
+<h4>GESTIÓN DE USUARIOS</h4>
 
 <table class="table table-striped">
     <thead>
@@ -20,7 +20,7 @@
                 <a href="?c=Web&a=Editar_Usuario&id_usuario=<?php echo $r->id_usuario; ?>">Editar</a>
             </td>
             <td>
-                <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Alumno&a=Eliminar_Usuario&id_usuario=<?php echo $r->id_usuario; ?>">Eliminar</a>
+                <a onclick="javascript:return confirm('¿Seguro de eliminar este registro?');" href="?c=Web&a=Eliminar_Usuario&id_usuario=<?php echo $r->id_usuario; ?>">Eliminar</a>
             </td>
         </tr>
     <?php endforeach; ?>

@@ -147,6 +147,28 @@ class WebControlador{
 		}
     }
 
+    public function Administracion_prod(){
+
+        $prod =new Productos();
+        if ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			require_once 'view/header.php';
+			require_once 'view/Contenido/vista_administracion_prod.php';
+			require_once 'view/footer.php';
+		}
+
+		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			echo "Necesitas ser Goku o el Administrador de la web para acceder";
+		}
+
+		
+		else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
+
+    }
+
 
     public function Editar_Usuario(){
 
@@ -175,6 +197,104 @@ class WebControlador{
         
         header("Location: index.php?c=Web&a=Administracion");
 
+    }
+
+    public function Eliminar_Usuario(){
+
+        $this->usuario->Eliminar_user($_REQUEST['id_usuario']);
+        header("Location: index.php?c=Web&a=Administracion");
+
+    }
+
+    public function Editar_Producto(){
+
+        $prod= new Productos();
+
+		if(isset($_REQUEST['id_producto'])){
+            $prod = $this->productos->Obtener_prod($_REQUEST['id_producto']);
+        }
+
+		require_once 'view/header.php';
+		require_once 'view/Contenido/vista_administracion_prod2.php';
+		require_once 'view/footer.php';
+    }
+
+    public function Actualizar_producto(){
+
+		$prod= new Productos();
+
+		//para la carga de la imagen
+		$foto = $_FILES['ruta_foto']['name'];
+		$ruta = $_FILES['ruta_foto']['tmp_name'];
+		$destino = "assets/images/".$foto;
+		copy($ruta,$destino);
+
+        $prod->id_producto = $_REQUEST['id_producto'];
+        $prod->id_categoria = $_REQUEST['id_categoria'];
+        $prod->nombre_producto = $_REQUEST['nombre_producto'];
+		$prod->descripcion_producto = $_REQUEST['descripcion_producto'];
+		$prod->ruta_foto= $destino;
+
+
+
+        $this->productos->Modificar_prod($prod);
+        
+        header("Location: index.php?c=Web&a=Admin");
+
+
+	}
+
+    public function Eliminar_Producto(){
+
+        $this->productos->Eliminar_prod($_REQUEST['id_producto']);
+        header("Location: index.php?c=Web&a=Administracion");
+
+    }
+
+    public function Anadir_Producto(){
+
+        $prod= new Productos();
+        $user = new Usuario();
+
+        if ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			require_once 'view/header.php';
+			require_once 'view/Contenido/vista_anadir_prod.php';
+			require_once 'view/footer.php';
+		}
+
+		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			echo "Necesitas ser Goku o el Administrador de la web para acceder";
+		}
+
+		
+		else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
+		
+		
+	}
+
+    public function Nuevo_Producto(){
+
+        $prod= new Productos();
+
+		//para la carga de la imagen
+		$foto = $_FILES['ruta_foto']['name'];
+		$ruta = $_FILES['ruta_foto']['tmp_name'];
+		$destino = "assets/images/".$foto;
+		copy($ruta,$destino);
+
+        $prod->id_categoria = $_REQUEST['id_categoria'];
+        $prod->nombre_producto = $_REQUEST['nombre_producto'];
+		$prod->descripcion_producto = $_REQUEST['descripcion_producto'];
+		$prod->ruta_foto= $destino;
+
+
+		$this->productos->Nuevo_prod($prod);		
+
+		echo "Producto añadido con éxito, <a href='index.php'>volver</a>";
     }
 
 
