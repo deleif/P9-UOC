@@ -53,7 +53,7 @@
 
 
 
-
+<h3>Todas las valoraciones</h3>
 
 <div class="row">
 <?php foreach($this->valoraciones->Buscar_Lista_Votaciones() as $r): ?>
@@ -62,7 +62,7 @@
   <br>
   <div class="card" style="width: 18rem;">  
   <div class="card-body">
-    <table class="table  ">
+    <table class="table-success">
     <tbody>    
 
     <tr>
@@ -90,6 +90,8 @@
 </div> 
 <?php endforeach; ?>
 </div>  
+
+
 
 
 
