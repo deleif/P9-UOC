@@ -1,5 +1,5 @@
 
-
+<LINK REL=StyleSheet HREF="assets/css/estilo_estrellas.css" TYPE="text/css" MEDIA=screen>
 <table class="table table-striped">
 
     <thead>
