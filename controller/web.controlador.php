@@ -234,7 +234,7 @@ class WebControlador{
 
                    
                 
-                header("Location: index.php");
+                header("Location: ?c=Web&a=Crud");
                          
    }
    

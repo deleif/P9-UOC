@@ -26,25 +26,29 @@
 			<td><?php echo $prodsel->puntos_media; ?></td>
             <td>
                 <!--<a href="?c=Web&a=ValorarProducto&id=<?php //echo $r->id_producto; ?>">Valorar</a>-->
-                <form id="frm-valoracion" action="?c=Web&a=Votar&id_producto=<?php echo $prodsel->id_producto; ?>" method="post" enctype="multipart/form-data">
-                <input id="radio1" type="radio" name="estrellas" value="5"><!--
-                --><label for="radio1">★</label><!--
-                --><input id="radio2" type="radio" name="estrellas" value="4"><!--
-                --><label for="radio2">★</label><!--
-                --><input id="radio3" type="radio" name="estrellas" value="3"><!--
-                --><label for="radio3">★</label><!--
-                --><input id="radio4" type="radio" name="estrellas" value="2"><!--
-                --><label for="radio4">★</label><!--
-                --><input id="radio5" type="radio" name="estrellas" value="1"><!--
-                --><label for="radio5">★</label>
-                
-                <input type="text" name="valoracion_escrita">
-                <br></br>
+                <div id="wrapper">
+                    <form id="frm-valoracion" action="?c=Web&a=Votar&id_producto=<?php echo $prodsel->id_producto; ?>" method="post" enctype="multipart/form-data">
+                        <p class="clasificacion">
+                        <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                        --><label for="radio1">★</label><!--
+                        --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                        --><label for="radio2">★</label><!--
+                        --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                        --><label for="radio3">★</label><!--
+                        --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                        --><label for="radio4">★</label><!--
+                        --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                        --><label for="radio5">★</label>
+                        
+                        <input type="text" name="valoracion_escrita">
+                        <br></br>
 
-                <div class="text-right">
-                    <button class="btn btn-success">Valorar</button>
+                        <div class="text-right">
+                            <button class="btn btn-success">Valorar</button>
+                        </div>
+                        </p>
+                    </form>
                 </div>
-            
             </td>
         </tr>
 
@@ -53,10 +57,11 @@
 
 
 
-<h3>Todas las valoraciones</h3>
+<h3 class="text-success">Todas las valoraciones</h3>
 
 <div class="row">
-<?php foreach($this->valoraciones->Buscar_Lista_Votaciones() as $r): ?>
+    
+<?php foreach($this->valoraciones->buscar_valoracion_por_producto($prodsel->id_producto) as $r): ?>
 
   <div class=".col-lg-auto col-centrada"  >
   <br>
@@ -74,14 +79,12 @@
             <tr>
                 <td><b>Nombre usuario:</b> <?php echo $r->nombre_usuario; ?></td>
             </tr>
-            <tr>
-                <td><b>Puntuación: </b><?php echo $r->puntos_producto_usuario; ?></td>
-            </tr>
+            
             <tr>
                 <td><b>Comentario:</b> <?php echo $r->valoracion_producto; ?></td>
             </tr>
             <tr>
-                <td><b>Valoración media de nuestros usuarios:</b> <?php echo $r->puntos_media; ?></td>
+                <td><b>Valoración de este usuario:</b> <?php echo $r->puntos_producto_usuario; ?></td>
             </tr>   
         </tbody>
     </table>
