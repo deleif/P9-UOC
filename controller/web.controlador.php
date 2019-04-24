@@ -211,7 +211,7 @@ class WebControlador{
 
         $alm= new Valoraciones();
         $usu= new Usuario();
-        //echo $_SESSION['nombre_usuario'];
+        
         
                 $usu = $this->valoraciones->buscar_id_usuario($_SESSION['nombre_usuario']);
                 
@@ -222,10 +222,8 @@ class WebControlador{
                 
                 $this->valoraciones->Votacion($alm);
                 
-               
-            //echo $_REQUEST['estrellas'];
-            //echo $_REQUEST['valoracion_escrita'];
-            //echo $_REQUEST['id_producto'];
+                header("Location: index.php");
+            
             
 
    }
