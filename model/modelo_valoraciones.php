@@ -95,13 +95,8 @@ require_once 'model/conexion.php';
     public function buscar_valoracion_por_producto($id_producto){
             
         try{
-            
-            $stm= $this->pdo->prepare("SELECT nombre_usuario, nombre_producto, ruta_foto, valoracion_producto, puntos_media, puntos_producto_usuario
-            FROM usuario
-            INNER JOIN votaciones_producto ON usuario.id_usuario = votaciones_producto.id_usuario
-            INNER JOIN productos ON votaciones_producto.id_producto = productos.id_producto
-            and productos.id_producto= '$id_producto'");
-
+            $sql="SELECT * FROM usuario WHERE id_producto= '$id_producto' ";
+            $stm= $this->pdo->prepare($sql);
             $stm->execute();
             return $stm->fetch(PDO::FETCH_OBJ);
         }catch(Exception $e){
