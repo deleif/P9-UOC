@@ -25,7 +25,24 @@
 			<td><?php echo $prodsel->puntos_total; ?></td>
 			<td><?php echo $prodsel->puntos_media; ?></td>
             <td>
-                <a href="?c=Web&a=ValorarProducto&id=<?php echo $r->id_producto; ?>">Valorar</a>
+                <!--<a href="?c=Web&a=ValorarProducto&id=<?php //echo $r->id_producto; ?>">Valorar</a>-->
+                <form id="frm-valoracion" action="?c=Web&a=Votar&id_producto=<?php echo $prodsel->id_producto; ?>" method="post" enctype="multipart/form-data">
+                <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                --><label for="radio1">★</label><!--
+                --><input id="radio2" type="radio" name="estrellas" value="4"><!--
+                --><label for="radio2">★</label><!--
+                --><input id="radio3" type="radio" name="estrellas" value="3"><!--
+                --><label for="radio3">★</label><!--
+                --><input id="radio4" type="radio" name="estrellas" value="2"><!--
+                --><label for="radio4">★</label><!--
+                --><input id="radio5" type="radio" name="estrellas" value="1"><!--
+                --><label for="radio5">★</label>
+                </br>
+                <input type="text" name="valoracion_escrita">
+                </br>
+                <div class="text-right">
+                    <button class="btn btn-success">Valorar</button>
+                </div>
             </td>
         </tr>
 

@@ -112,6 +112,26 @@ class Usuario{
 		}
 
 	}
+
+	public function Obtener_id($nombre_usuario)
+	{
+		if(isset($_SESSION["nombre_usuario"])){
+			$variable= $_SESSION['nombre_usuario'];
+		try 
+		{
+			$stm = $this->pdo
+			          ->prepare("SELECT id_usuario FROM usuarios WHERE nombre_usuario= '$variable' ");
+			          
+
+			$stm->execute(array($id));
+			return $stm->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) 
+		{
+			die($e->getMessage());
+		}
+	}
+	
+	}
 	
 
 	

@@ -2,13 +2,15 @@
 
 require_once 'model/modelo_usuarios.php';
 require_once 'model/modelo_productos.php';
-require_once 'model/modelo_categorias.php';			
+require_once 'model/modelo_categorias.php';	
+require_once 'model/modelo_valoraciones.php';		
 
 class WebControlador{
 	
     private $usuario;
     private $productos;
     private $categorias;
+    private $valoraciones;
     
 
 	public function __CONSTRUCT(){
@@ -16,6 +18,7 @@ class WebControlador{
     $this->usuario= new Usuario();
     $this->productos= new productos();
     $this->categorias= new Categorias();
+    $this->valoraciones= new valoraciones();
 
     }
     
@@ -201,6 +204,31 @@ class WebControlador{
 			header("Location: index.php?c=Web&a=Login_usuario");
 		}
     }
+
+    public function Votar(){
+        require_once 'model/modelo_valoraciones.php';
+        require_once 'model/modelo_usuarios.php';
+
+        $alm= new Valoraciones();
+        $usu= new Usuario();
+        //echo $_SESSION['nombre_usuario'];
+        
+                $usu = $this->valoraciones->buscar_id_usuario($_SESSION['nombre_usuario']);
+                
+                $alm->id_usuario = $usu->id_usuario;
+                $alm->id_producto = $_REQUEST['id_producto'];
+                $alm->puntos_producto_usuario = $_REQUEST['estrellas'];
+                $alm->valoracion_producto = $_REQUEST['valoracion_escrita'];
+                
+                $this->valoraciones->Votacion($alm);
+                
+               
+            //echo $_REQUEST['estrellas'];
+            //echo $_REQUEST['valoracion_escrita'];
+            //echo $_REQUEST['id_producto'];
+            
+
+   }
 
 
     
