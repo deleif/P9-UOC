@@ -222,21 +222,26 @@ class WebControlador{
                 
                 $this->valoraciones->Votacion($alm);
                 
-                header("Location: index.php");
-            
-            
+                //intento de if para que detecte si el usuario ya ha votado una vez un produco y poder 
+                //actualizarlo o registrarlo si no lo ha votado nunca.
+                //if ($alm->id_usuario && $alm->id_producto  == 0 ){
+                   // $this->valoraciones->Votacion($alm);
+               // }else{
+                   // $this->valoraciones->Update_Votacion($alm);
+               // }
+                   
+                    
 
+                   
+                
+                header("Location: index.php");
+                         
    }
+   
+   
+}
 
 
     
-
-
-
-	
-
-
-
-}
 
 ?>

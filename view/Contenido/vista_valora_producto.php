@@ -44,8 +44,53 @@
                 <div class="text-right">
                     <button class="btn btn-success">Valorar</button>
                 </div>
+            
             </td>
         </tr>
 
     </tbody>
 </table> 
+
+
+
+
+
+<div class="row">
+<?php foreach($this->valoraciones->Buscar_Lista_Votaciones() as $r): ?>
+
+  <div class=".col-lg-auto col-centrada"  >
+  <br>
+  <div class="card" style="width: 18rem;">  
+  <div class="card-body">
+    <table class="table  ">
+    <tbody>    
+
+    <tr>
+                <td><b><?php echo $r->nombre_producto; ?></b></td>		
+            </tr>
+            <tr>
+                <td><img src="<?php echo $r->ruta_foto;?>" alt="" /></td>
+            </tr>
+            <tr>
+                <td><b>Nombre usuario:</b> <?php echo $r->nombre_usuario; ?></td>
+            </tr>
+            <tr>
+                <td><b>Puntuación: </b><?php echo $r->puntos_producto_usuario; ?></td>
+            </tr>
+            <tr>
+                <td><b>Comentario:</b> <?php echo $r->valoracion_producto; ?></td>
+            </tr>
+            <tr>
+                <td><b>Valoración media de nuestros usuarios:</b> <?php echo $r->puntos_media; ?></td>
+            </tr>   
+        </tbody>
+    </table>
+    </div> 
+    </div> 
+</div> 
+<?php endforeach; ?>
+</div>  
+
+
+
+
