@@ -67,7 +67,7 @@
   <br>
   <div class="card" style="width: 18rem;">  
   <div class="card-body">
-    <table class="table-success">
+    <table class="table">
     <tbody>    
 
     <tr>
