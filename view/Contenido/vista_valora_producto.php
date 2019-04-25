@@ -39,14 +39,14 @@
                         --><label for="radio4">★</label><!--
                         --><input id="radio5" type="radio" name="estrellas" value="1"><!--
                         --><label for="radio5">★</label>
-                        
+                        </p>
                         <input type="text" name="valoracion_escrita">
                         <br></br>
 
                         <div class="text-right">
                             <button class="btn btn-success">Valorar</button>
                         </div>
-                        </p>
+                        
                     </form>
                 </div>
             </td>
