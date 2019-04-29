@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: localhost    Database: valoraciones_cerveza
+-- Host: 192.168.1.41    Database: valoraciones_cerveza
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.1.26-MariaDB
 
@@ -26,7 +26,7 @@ CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion_categoria` varchar(250) NOT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=100001 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -49,9 +49,9 @@ DROP TABLE IF EXISTS `nivel`;
 CREATE TABLE `nivel` (
   `id_nivel` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion_nivel` varchar(250) NOT NULL,
-  `ponderacion` int(11) NOT NULL,
+  `ponderacion` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_nivel`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -60,7 +60,7 @@ CREATE TABLE `nivel` (
 
 LOCK TABLES `nivel` WRITE;
 /*!40000 ALTER TABLE `nivel` DISABLE KEYS */;
-INSERT INTO `nivel` VALUES (1,'Novato',1),(2,'Intermedio',2),(3,'Experto',3);
+INSERT INTO `nivel` VALUES (1,'Novato',1.00),(2,'Intermedio',1.20),(3,'Experto',1.40),(4,'Administrador',1.00);
 /*!40000 ALTER TABLE `nivel` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -93,7 +93,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,1,'Heineken','Cerveza de tipo Lager y estilo Pilsen de color amarillo claro y brillante, con una espuma blanca intensa y cremosa.','',2,5,2.50,'assets/images/heineken.png'),(2,1,'Carlsberg','Bien proporcionada, con sabor a lúpulo, grano de trigo, pino, acedera y manzanas de verano danesas.','',3,24,8.00,'assets/images/calsberg.png'),(3,1,'Foster','Cerveza extremadamente ligera, sin cuerpo, con demasiado carbónico y con un sabor dulce.','',1,15,15.00,'assets/images/foster.png'),(4,2,'Warsteiner','Ligera y de suave carbonatación, donde detectar gran presencia de la malta y acabado con cierto amargor.','',2,8,4.00,'assets/images/warsteiner.png'),(5,2,'Bitburger ',' Se aprecia en la copa que el carbónico es grueso y abundante, dando cierto punto de refresco al conjunto','',0,0,0.00,'assets/images/bitburger.png'),(6,2,'Beck\'s','Cerveza con poca espuma, muy blanca, y que dura muy poco en la copa, de color amarillo pálido.','',1,8,8.00,'assets/images/becks.png'),(7,3,'Citra Cascade','Tiene un nivel de amargor moderado, y resulta ideal para hacer prácticas como el dry-hopping o el hopback','',0,0,0.00,'assets/images/citra.png'),(8,3,'Ambar IPA','Destaca por la complejidad de sabores y aromas donde predominan las notas florales, cítricas y a frutas tropicales','',0,0,0.00,'assets/images/ambar.png'),(9,3,'Moritz BaPA','Aromática, sedosa y muy fácil de beber. Elaborada con levadura de alta fermentación con un perfil muy afrutado, una mezcla de malta de cebada, malta de trigo y copos de avena','',0,0,0.00,'assets/images/moritz.png');
+INSERT INTO `productos` VALUES (1,1,'Heineken','Cerveza de tipo Lager y estilo Pilsen de color amarillo claro y brillante, con una espuma blanca intensa y cremosa.','',3,16,3.90,'assets/images/heineken.png'),(2,1,'Carlsberg','Bien proporcionada, con sabor a lúpulo, grano de trigo, pino, acedera y manzanas de verano danesas.','',1,3,2.14,'assets/images/calsberg.png'),(3,1,'Foster','Cerveza extremadamente ligera, sin cuerpo, con demasiado carbónico y con un sabor dulce.','',0,0,0.00,'assets/images/foster.png'),(4,2,'Warsteiner','Ligera y de suave carbonatación, donde detectar gran presencia de la malta y acabado con cierto amargor.','',0,0,0.00,'assets/images/warsteiner.png'),(5,2,'Bitburger ',' Se aprecia en la copa que el carbónico es grueso y abundante, dando cierto punto de refresco al conjunto','',0,0,0.00,'assets/images/bitburger.png'),(6,2,'Beck\'s','Cerveza con poca espuma, muy blanca, y que dura muy poco en la copa, de color amarillo pálido.','',0,0,0.00,'assets/images/becks.png'),(7,3,'Citra Cascade','Tiene un nivel de amargor moderado, y resulta ideal para hacer prácticas como el dry-hopping o el hopback','',1,5,3.57,'assets/images/citra.png'),(8,3,'Ambar IPA','Destaca por la complejidad de sabores y aromas donde predominan las notas florales, cítricas y a frutas tropicales','',0,0,0.00,'assets/images/ambar.png'),(9,3,'Moritz BaPA','Aromática, sedosa y muy fácil de beber. Elaborada con levadura de alta fermentación con un perfil muy afrutado, una mezcla de malta de cebada, malta de trigo y copos de avena','',0,0,0.00,'assets/images/moritz.png');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -112,7 +112,7 @@ CREATE TABLE `usuario` (
   PRIMARY KEY (`id_usuario`),
   KEY `id_nivel` (`id_nivel`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +121,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,2,'javier','jc.1'),(2,3,'araceli','ar.2'),(3,2,'daniel','da.3'),(4,1,'vicent','vi.4'),(5,1,'dleiva','a'),(6,1,'dleiva','a');
+INSERT INTO `usuario` VALUES (1,3,'javier','jc.1'),(2,3,'araceli','ar.2'),(3,2,'daniel','a'),(4,1,'vicent','vi.4'),(5,1,'dleiva','a'),(7,4,'Admin','a');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -135,7 +135,9 @@ DROP TABLE IF EXISTS `votaciones_producto`;
 CREATE TABLE `votaciones_producto` (
   `id_usuario` int(11) NOT NULL,
   `id_producto` int(11) NOT NULL,
-  `puntos_producto_usuario` int(11) NOT NULL,
+  `puntos_producto_usuario` decimal(10,2) NOT NULL,
+  `puntos_ponderados` decimal(10,2) DEFAULT NULL,
+  `puntos_normaliza` decimal(10,2) DEFAULT NULL,
   `valoracion_producto` varchar(250) NOT NULL,
   PRIMARY KEY (`id_usuario`,`id_producto`),
   KEY `id_producto` (`id_producto`),
@@ -150,9 +152,84 @@ CREATE TABLE `votaciones_producto` (
 
 LOCK TABLES `votaciones_producto` WRITE;
 /*!40000 ALTER TABLE `votaciones_producto` DISABLE KEYS */;
-INSERT INTO `votaciones_producto` VALUES (1,1,1,'Muy mala'),(1,2,2,'Mejor'),(1,4,2,'Muy floja'),(2,1,1,'Normalita'),(2,2,4,'Muy buena'),(2,3,5,'Excelente'),(3,2,4,'Muy sabrosa'),(3,4,2,'Mejorable'),(3,6,4,'Muy fuerte');
+INSERT INTO `votaciones_producto` VALUES (1,1,5.00,7.00,5.00,''),(2,1,5.00,7.00,5.00,''),(3,1,2.00,2.40,1.71,''),(5,2,3.00,3.00,2.14,''),(5,7,5.00,5.00,3.57,'');
 /*!40000 ALTER TABLE `votaciones_producto` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`::1`*/ /*!50003 TRIGGER actualiza_puntos_ponderados 
+before INSERT ON votaciones_producto 
+FOR EACH ROW
+BEGIN
+    
+    SET new.puntos_ponderados = NEW.puntos_producto_usuario * 
+        ((select distinct a.ponderacion from nivel a 
+        inner join usuario b  
+        where a.id_nivel = b.id_nivel 
+        and b.id_usuario = new.id_usuario limit 1));
+      
+    SET new.puntos_normaliza = 5 * (NEW.puntos_ponderados / 7);  
+  
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8 */ ;
+/*!50003 SET character_set_results = utf8 */ ;
+/*!50003 SET collation_connection  = utf8_general_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`::1`*/ /*!50003 TRIGGER actualiza_puntos 
+after insert ON votaciones_producto 
+FOR EACH ROW
+
+BEGIN
+
+    DECLARE var_t float;
+    DECLARE var_num_votos int;
+    DECLARE var_puntos_total int;
+    DECLARE var_media float;
+        
+    SET var_num_votos = (select num_votos from productos a 
+        inner join votaciones_producto b  
+        where a.id_producto = new.id_producto limit 1) + 1;
+    
+    SET var_puntos_total = (select puntos_total from productos a 
+        inner join votaciones_producto b  
+        where a.id_producto = new.id_producto limit 1) + NEW.puntos_producto_usuario * 
+        ((select distinct a.ponderacion from nivel a 
+        inner join usuario b  
+        where a.id_nivel = b.id_nivel 
+        and b.id_usuario = new.id_usuario limit 1));
+	  
+    SET var_media = (SELECT SUM(puntos_normaliza) from votaciones_producto WHERE id_producto = NEW.id_producto) /var_num_votos;    
+        
+    UPDATE productos SET
+		num_votos = var_num_votos,        
+		puntos_total = var_puntos_total,                
+        puntos_media = var_media  
+		
+	WHERE id_producto = NEW.id_producto;
+    
+END */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -163,4 +240,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-21 19:24:53
+-- Dump completed on 2019-04-28 20:42:59
