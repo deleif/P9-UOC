@@ -65,7 +65,7 @@
 
   <div class=".col-lg-auto col-centrada"  >
   <br>
-  <div class="card" style="width: 18rem;">  
+  <div class="card bg-light" style="width: 18rem;">  
   <div class="card-body">
     <table class="table">
     <tbody>    
