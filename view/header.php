@@ -19,9 +19,24 @@
     <div id="container">
 
         <!--IMAGEN CORPORATIVA-->
-        <div id="cabecera">
+        <!--<div id="cabecera">
             <a title="Inicio" href="index.php"><img src="assets/images/logotipo.png" alt="logo corporativo" width="80%" height="90%" /></a>
-        </div>
+        </div>-->
+
+         <!--IMAGEN CORPORATIVA, hago cambio por vídeo-->
+        <header>
+                <div class="overlay" id="header"></div>
+                    <video playsinline="playsinline" autoplay="autoplay" muted="muted" loop="loop">
+                        <source src="assets/videos/video_3.mp4" type="video/mp4">
+                    </video>
+                    <div class="container h-100">
+                        <div class="d-flex h-100 text-center align-items-center">
+                        <div class="w-100 text-white">
+                        <a title="Inicio" href="index.php"><h1 class="display-3">JDA Cervezas</h1></a>
+                            <p class="lead mb-0">Tu opinión importa</p>
+                    </div>
+                </div>
+        </header>
 
         <!--MENÚ NAVBAR-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

@@ -3,9 +3,9 @@
 <div class="row">
 <?php foreach($this->productos->ListarProductos() as $r): ?>
 
-  <div class=".col-lg-auto col-centrada"  >
+  <div class=".col-lg-auto col-centrada "  >
   <br>
-  <div class="card" style="width: 18rem;">  
+  <div class="card bg-light" style="width: 18rem;">  
   <div class="card-body">
 
   <h5 class="card-title"><?php echo $r->nombre_producto; ?></h5>
