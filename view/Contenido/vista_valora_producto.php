@@ -55,9 +55,11 @@
 </table> 
 
 
-
-<h3 class="text-success">Todas las valoraciones</h3>
-
+<div class="bg-secondary">
+<br></br>
+<h3 class="text-white">Todas las valoraciones</h3>
+<br></br>
+</div>
 <div class="row">
     
 <?php foreach($this->valoraciones->buscar_valoracion_por_producto($prodsel->id_producto) as $r): ?>
