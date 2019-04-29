@@ -1,6 +1,7 @@
 
 
 <div class="row">
+
 <?php foreach($this->productos->ObtenerProductoCategoria($_REQUEST['id_categoria']) as $r): ?>
 
 <div class=".col-lg-auto col-centrada"  >
