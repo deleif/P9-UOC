@@ -1,7 +1,7 @@
-<h1>EDITAR PRODUCTO</h1>
-<h2><?php echo $prod->nombre_producto; ?></h2>
-<h2>ID pRODUCTO: <?php echo $prod->id_producto; ?></h2>
+<br><h1>EDITAR PRODUCTO</h1><br>
+<h2><?php echo $prod->nombre_producto; ?></h2><br>
 
+<div class="row justify-content-center">
 <form action="?c=Web&a=Actualizar_producto" method="post" enctype="multipart/form-data">
 <input type="hidden" name="id_producto" value="<?php echo $prod->id_producto; ?>" />    
     
@@ -25,13 +25,15 @@
     </div>
 
     <div class="form-group">
-    <label>Imagen</label><br>
-        
+    <label>Imagen</label><br>    
         <img src="<?php echo $prod->ruta_foto; ?>">
         <input type="file" id = "ruta_foto" name="ruta_foto" accept="image/png, image/jpeg" value="<?php echo $prod->ruta_foto; ?>" class="form-control" />
     </div>
+
+    <hr/>
         
-    <div class="text-right">
+    <div class="form-group">
         <button class="btn btn-success">Actualizar</button>
     </div>
 </form>
+</div><br>

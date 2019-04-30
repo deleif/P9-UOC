@@ -1,11 +1,12 @@
-<h1>EDITAR USUARIO: <?php echo $user->nombre_usuario; ?></h1>
-<h2>ID Usuario: <?php echo $user->id_usuario; ?></h2>
+<br><h1>ADMINISTRACIÓN</h1><br>
+<h2>Editar usuario: <?php echo $user->nombre_usuario; ?></h2><br>
 
-<form id="frm-alumno" action="?c=Web&a=Guardar_Usuario" method="post" enctype="multipart/form-data">
+<div class="row justify-content-center">
+<form action="?c=Web&a=Guardar_Usuario" method="post" enctype="multipart/form-data">
     <input type="hidden" name="id_usuario" value="<?php echo $user->id_usuario; ?>" />
     
-    <div class="form-group">
-        <label>ID Nivel</label>
+    <div class="form-group" >
+        <label>Nivel de usuario</label>
         <select name="id_nivel" value="<?php echo $user->id_nivel; ?>" class="form-control" placeholder="Ingrese el nivel">
                 <option value="1">Novato</option>
                 <option value="2">Intermedio</option>
@@ -14,18 +15,19 @@
     </div>
     
     <div class="form-group">
-        <label>Nombre de usuario</label>
-        <input type="text" name="nombre_usuario" value="<?php echo $user->nombre_usuario; ?>" class="form-control" placeholder="Ingrese su apellido"/>
+        <label>Username</label>
+        <input type="text" name="nombre_usuario" value="<?php echo $user->nombre_usuario; ?>" class="form-control" placeholder="Ingrese su usuario"/>
     </div>
 
-    <div class="form-group">
-        <label>Password de usuario</label>
-        <input type="password" name="password_usuario" value="<?php echo $user->password_usuario; ?>" class="form-control" placeholder="Ingrese su apellido"/>
+    <div class="form-group" >
+        <label>Password</label>
+        <input type="password" name="password_usuario" value="<?php echo $user->password_usuario; ?>" class="form-control" placeholder="Ingrese su contraseña"/>
     </div>
     
-    <hr />
+    <hr/>
     
-    <div class="text-right">
+    <div class="form-group">
         <button class="btn btn-success">Guardar</button>
     </div>
 </form>
+</div><br>

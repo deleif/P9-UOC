@@ -114,12 +114,6 @@ class WebControlador{
 			require_once 'view/footer.php';
 		}
 
-		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
-			
-			echo "Necesitas ser Goku o el Administrador de la web para acceder";
-		}
-
-		
 		else {
 			header("Location: index.php?c=Web&a=Login_usuario");
 		}
@@ -136,11 +130,6 @@ class WebControlador{
 			require_once 'view/footer.php';
 		}
 
-		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
-			
-			echo "Necesitas ser Goku o el Administrador de la web para acceder";
-		}
-
 		
 		else {
 			header("Location: index.php?c=Web&a=Login_usuario");
@@ -155,11 +144,6 @@ class WebControlador{
 			require_once 'view/header.php';
 			require_once 'view/Contenido/vista_administracion_prod.php';
 			require_once 'view/footer.php';
-		}
-
-		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
-			
-			echo "Necesitas ser Goku o el Administrador de la web para acceder";
 		}
 
 		
@@ -263,11 +247,6 @@ class WebControlador{
 			require_once 'view/footer.php';
 		}
 
-		elseif ($_SESSION["nombre_usuario"] == 'Admin' ) {		
-			
-			echo "Necesitas ser Goku o el Administrador de la web para acceder";
-		}
-
 		
 		else {
 			header("Location: index.php?c=Web&a=Login_usuario");
@@ -356,6 +335,53 @@ class WebControlador{
                 
                 header("Location: ?c=Web&a=Crud");
                          
+   }
+
+   public function Editar_Comentarios(){
+
+    $val =new valoraciones();
+
+        if ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			require_once 'view/header.php';
+			require_once 'view/Contenido/vista_edit_valoraciones.php';
+			require_once 'view/footer.php';
+		}
+
+		
+		else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
+    
+   }
+
+   public function edit_Coment(){
+
+    $val = new valoraciones();
+        
+        if(isset($_REQUEST['id_usuario'], $_REQUEST['id_producto'])){
+            $val = $this->valoraciones->Obtener_coment($_REQUEST['id_usuario'], $_REQUEST['id_producto']);
+        }
+        
+        require_once 'view/header.php';
+        require_once 'view/Contenido/vista_edit_coment.php';
+        require_once 'view/footer.php';
+
+   }
+
+   public function Actualizar_Comentario(){
+
+    $val= new valoraciones();
+
+        $val->id_usuario = $_REQUEST['id_usuario'];
+        $val->id_producto = $_REQUEST['id_producto'];
+        $val->valoracion_producto = $_REQUEST['valoracion_producto'];
+
+
+        $this->valoraciones->Modificar_Comentario($val);
+        
+        header("Location: index.php?c=Web&a=Admin");
+
    }
    
    

@@ -108,12 +108,59 @@ require_once 'model/conexion.php';
             die($e->getMessage());
         }
     
-}   
+    }
+
+    public function ListarValoraciones(){
+
+        try{
+			$result = array();
+			$sql = $this->pdo->prepare("SELECT * FROM votaciones_producto");
+			$sql->execute();
+			return $sql->fetchAll(PDO::FETCH_OBJ);
+		}catch(Exception $e){
+			die($e->getMessage());
+		}
+
+    }
+
+    public function Obtener_coment($id_usuario, $id_producto){
+
+		try{
+			$sql = $this->pdo
+			    ->prepare("SELECT * FROM votaciones_producto WHERE id_usuario = ? AND id_producto = ?");         
+				$sql->execute(array($id_usuario, $id_producto));
+			return $sql->fetch(PDO::FETCH_OBJ);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+
+	}
+
+    public function Modificar_Comentario($data){
+
+        try{
+			$sql = "UPDATE votaciones_producto SET 
+
+						valoracion_producto = ? 
+
+				    WHERE id_usuario = ? AND id_producto = ?";
+
+			$this->pdo->prepare($sql)
+			     ->execute(
+				    array(
+                        $data->valoracion_producto, 
+                        $data->id_usuario,
+                        $data->id_producto
+					)
+				);
+		} catch (Exception $e) {
+			die($e->getMessage());
+		}
+
+    }
 
 
-    
-    
-        
+
 
 
     }
