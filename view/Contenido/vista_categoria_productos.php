@@ -23,7 +23,9 @@
             <td><img src="<?php echo $r->ruta_foto;?>" alt="" /></td>
         </tr>
         <tr>
-			<td>Votos: <?php echo $r->num_votos; ?> | Puntos: <?php echo $r->puntos_total; ?> | Media: <?php echo $r->puntos_media; ?></td>
+			<td> <small>Valoración media:</small> <h5><?php echo $r->puntos_media; ?></h5>
+            
+            <small><?php echo $r->num_votos; ?> usuarios han valorado este producto</small></td>
         </tr>
         <tr>
             <td>
