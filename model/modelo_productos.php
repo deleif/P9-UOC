@@ -147,9 +147,25 @@ require_once 'model/conexion.php';
             } catch (Exception $e){
                 die($e->getMessage());
             }
-        }
-
     }
+
+
+    public function ActualizaCategoriaProductos($id_categoria){
+
+        try{
+            $sql = $this->pdo->prepare("UPDATE productos SET id_categoria = 4 where id_categoria = ?");			          
+
+            $sql->execute(array($id_categoria));
+        } catch (Exception $e){
+            die($e->getMessage());
+        }
+    }
+
+}
+
+
+
+    
 
 ?>
 
