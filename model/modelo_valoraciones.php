@@ -39,6 +39,8 @@ require_once 'model/conexion.php';
                 die($e->getMessage());
             }
         }
+
+        
         public function buscar_id_usuario($nombre_usuario){
             
                 try{
