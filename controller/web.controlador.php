@@ -383,11 +383,87 @@ class WebControlador{
         header("Location: index.php?c=Web&a=Admin");
 
    }
+
    
    
-}
+   public function Editar_Categorias(){
+        $newcat= new Categorias();
+        
+        if ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+			require_once 'view/header.php';
+			require_once 'view/Contenido/vista_editar_categorias.php';
+			require_once 'view/footer.php';
+		}
+
+		
+		else {
+			header("Location: index.php?c=Web&a=Login_usuario");
+		}
+    
+   }
+   
+
+    public function Insertar_Categoria(){
+
+    $newcat= new Categorias();
+
+        $newcat->descripcion_categoria = $_REQUEST['descripcion_categoria'];
+        $this->categorias->InsertarNuevaCategoría($newcat);        
+        header("Location: index.php?c=Web&a=Editar_Categorias");
+
+   }
+
+   
+   public function Eliminar_Categoria(){
+
+        $this->productos->ActualizaCategoriaProductos($_REQUEST['id_categoria']);   
+        $this->categorias->EliminarCategoria($_REQUEST['id_categoria']);
+        header("Location: index.php?c=Web&a=Editar_Categorias");
+    }
 
 
     
+    public function Editar_descripcion_Categoria(){
+        $catsel= new Categorias();
+        
+        if ($_SESSION["nombre_usuario"] == 'Admin' ) {		
+			
+            
+            if(isset($_REQUEST['id_categoria'])){
+                $catsel = $this->categorias->Obtener_cat($_REQUEST['id_categoria']);
+            }
+            
+            require_once 'view/header.php';
+			require_once 'view/Contenido/vista_editar_descripcion_categoria.php';
+			require_once 'view/footer.php';
+		}
 
-?>
+		
+		else {
+			header("Location: index.php?c=Web&a=Editar_Categorias");
+		}
+    
+   }
+
+   public function Actualizar_Categoria(){
+
+        $catsel= new Categorias();
+        $catsel->descripcion_categoria = $_REQUEST['descripcion_categoria']; 
+
+        echo $catsel->descripcion_categoria = $_REQUEST['descripcion_categoria'];
+        echo $catsel->id_categoria = $_REQUEST['id_categoria'];
+
+        
+        $this->categorias->ModificarCategoria($catsel);
+        echo "Categoría actualizada";
+        header("Location: index.php?c=Web&a=Admin");
+        
+
+   }
+
+
+
+
+}
+

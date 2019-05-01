@@ -72,5 +72,28 @@
       </div>
     </div>
   </div>
+  <div class="row">
+  <div class="col-sm-6 col-md-6">
+      <div class="card">
+        <div class="card-header">
+        <h4>EDITAR CATEGORÍAS</h4>
+        </div>
+        <div class="card-block">
+          <p class="card-text"><br>Edite las categorías de los productos.
+          </p>
+          <button type="button" class="btn btn-primary" onclick="location.href = '?c=Web&a=Editar_Categorias'">Editar categorías</button>
+          <p><br></p>
+        </div>
+        <div class="card-footer">
+        <br>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div>
+
+
 </div>
 <br>
