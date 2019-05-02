@@ -10,6 +10,8 @@ require_once 'model/conexion.php';
         public $id_producto;
         public $puntos_producto_usuario;
         public $valoracion_producto;
+        public $nombre_usuario;
+        public $nombre_producto;
 
         public function __CONSTRUCT(){
             try{
@@ -116,7 +118,9 @@ require_once 'model/conexion.php';
 
         try{
 			$result = array();
-			$sql = $this->pdo->prepare("SELECT * FROM votaciones_producto");
+			$sql = $this->pdo->prepare("SELECT usuario.nombre_usuario, votaciones_producto.valoracion_producto, votaciones_producto.id_usuario, votaciones_producto.id_producto, productos.nombre_producto 
+                                        FROM usuario, votaciones_producto, productos
+                                        WHERE usuario.id_usuario=votaciones_producto.id_usuario AND productos.id_producto=votaciones_producto.id_producto");
 			$sql->execute();
 			return $sql->fetchAll(PDO::FETCH_OBJ);
 		}catch(Exception $e){
