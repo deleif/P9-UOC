@@ -195,13 +195,12 @@ DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`::1`*/ /*!50003 TRIGGER actualiza_puntos 
 after insert ON votaciones_producto 
 FOR EACH ROW
-
 BEGIN
-
     DECLARE var_t float;
     DECLARE var_num_votos int;
     DECLARE var_puntos_total int;
     DECLARE var_media float;
+	DECLARE cuenta_votos INT;
         
     SET var_num_votos = (select num_votos from productos a 
         inner join votaciones_producto b  
@@ -223,6 +222,17 @@ BEGIN
         puntos_media = var_media  
 		
 	WHERE id_producto = NEW.id_producto;
+	
+	
+  set cuenta_votos = ( select count(*) from votaciones_producto where id_usuario = new.id_usuario );
+  
+  if (cuenta_votos > 3 and cuenta_votos <= 6)
+    then update usuario set id_nivel = 2 where id_usuario = new.id_usuario;
+  
+  elseif (cuenta_votos > 6)
+    then update usuario set id_nivel = 3 where id_usuario = new.id_usuario;
+    
+  end if;
     
 END */;;
 DELIMITER ;
