@@ -8,6 +8,10 @@ require_once 'model/conexion.php';
         public $valoracion_producto;
         public $nombre_usuario;
         public $nombre_producto;
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
         public function __CONSTRUCT(){
             try{
                 $this->pdo = Conexion::Conectar();     
@@ -28,12 +32,20 @@ require_once 'model/conexion.php';
                 
                 <?php
                 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
             }else{
                 
                 try{
                     
                 $sql = "INSERT INTO votaciones_producto (id_usuario, id_producto, puntos_producto_usuario,valoracion_producto) 
                             VALUES (?, ?, ?, ?)";
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
                     $this->pdo->prepare($sql)
                         ->execute(
                             array(
@@ -66,6 +78,10 @@ require_once 'model/conexion.php';
         }   
         
         
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
          public function Buscar_Lista_Votaciones(){
             
             try{
