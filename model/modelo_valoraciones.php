@@ -21,22 +21,53 @@ require_once 'model/conexion.php';
         }
 
         public function Votacion(Valoraciones $data){
-           try{
-           $sql = "INSERT INTO votaciones_producto (id_usuario, id_producto, puntos_producto_usuario,valoracion_producto) 
-                    VALUES (?, ?, ?, ?)";
 
-            $this->pdo->prepare($sql)
-                ->execute(
-                    array(
-                        $data->id_usuario,
-                        $data->id_producto, 
-                        $data->puntos_producto_usuario, 
-                        $data->valoracion_producto)
+            $sql2= "SELECT id_usuario FROM votaciones_producto WHERE id_usuario= '$data->id_usuario' AND id_producto='$data->id_producto'";
+            $stm = $this->pdo->prepare($sql2);
+            $stm ->execute();
+            if($stm->fetchColumn()>0){
+                try{
+                    $sql = "UPDATE votaciones_producto SET
+                     
+                    puntos_producto_usuario = ?,
+                    valoracion_producto = ? 
+                    WHERE id_usuario= '$data->id_usuario' AND id_producto='$data->id_producto'";
+         
+                     $this->pdo->prepare($sql)
+                         ->execute(
+                             array(
+                                 
+                                 $data->puntos_producto_usuario, 
+                                 $data->valoracion_producto)
+                             
+                        );
+                        
+                     } catch (Exception $e) {
+                         die($e->getMessage());
+                     }
+            }
+            else{
+                
+                try{
+                    throw new Exception("El usuario ha intentado valorar un producto dos veces");
+                $sql = "INSERT INTO votaciones_producto (id_usuario, id_producto, puntos_producto_usuario,valoracion_producto) 
+                            VALUES (?, ?, ?, ?)";
+
+                    $this->pdo->prepare($sql)
+                        ->execute(
+                            array(
+                                $data->id_usuario,
+                                $data->id_producto, 
+                                $data->puntos_producto_usuario, 
+                                $data->valoracion_producto)
+                            
+                    );
                     
-               );
-               
-            } catch (Exception $e) {
-                die($e->getMessage());
+                    } catch (Exception $e) {
+                        die($e->getMessage());
+                    
+                        
+                    }
             }
         }
 
@@ -54,28 +85,7 @@ require_once 'model/conexion.php';
             
         }   
         
-        public function Update_Votacion($data){
-            try{
-            $sql = "UPDATE votaciones_producto SET
-            id_usuario = ?,
-            id_producto = ?, 
-            puntos_producto_usuario = ?,
-            valoracion_producto = ?";
- 
-             $this->pdo->prepare($sql)
-                 ->execute(
-                     array(
-                         $data->id_usuario,
-                         $data->id_producto, 
-                         $data->puntos_producto_usuario, 
-                         $data->valoracion_producto)
-                     
-                );
-                
-             } catch (Exception $e) {
-                 die($e->getMessage());
-             }
-         }
+        
 
          public function Buscar_Lista_Votaciones(){
             
