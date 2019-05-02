@@ -8,9 +8,9 @@
     <div class="form-group">
         <label>Categoría</label>
         <select name="id_categoria" value="<?php echo $prod->id_categoria; ?>" class="form-control" placeholder="Ingrese su categoría">
-                <option value="1">Pale Lager</option>
-                <option value="2">Pilsner</option>
-                <option value="3">Pale Ale</option>
+            <?php foreach($this->categorias->ListarTipoCategorias() as $r): ?>
+                <option value=<?php echo $r->id_categoria; ?>><?php echo $r->descripcion_categoria; ?></option> 
+            <?php endforeach; ?> 
             </select>    
     </div>
 

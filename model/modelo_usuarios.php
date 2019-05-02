@@ -11,6 +11,7 @@ class Usuario{
 	public $password_usuario;
 	public $id_nivel;
 	public $id_usuario;
+	public $descripcion_nivel;
 	
 	public function __CONSTRUCT(){
 		try{
@@ -67,7 +68,7 @@ class Usuario{
 	public function Listar_usuarios(){
 		try{
 			$result = array();
-			$sql = $this->pdo->prepare("SELECT * FROM usuario");
+			$sql = $this->pdo->prepare("SELECT nivel.descripcion_nivel, usuario.nombre_usuario, usuario.id_usuario FROM nivel, usuario WHERE nivel.id_nivel=usuario.id_nivel");
 			$sql->execute();
 			return $sql->fetchAll(PDO::FETCH_OBJ);
 		}catch(Exception $e){
