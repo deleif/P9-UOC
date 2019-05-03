@@ -2,6 +2,7 @@
 
         <!--FOOTER-->
 
+    </div>
     <div id="footer">
         <p> &copy; JDA CERVEZAS. <?=date('Y')?>.
         	<?php

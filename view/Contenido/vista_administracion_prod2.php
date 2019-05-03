@@ -16,12 +16,12 @@
 
     <div class="form-group">
         <label>Nombre del producto</label>
-        <input type="text" name="nombre_producto" value="<?php echo $prod->nombre_producto; ?>" class="form-control" placeholder="Ingrese el nombre del producto" data-validacion-tipo="requerido|min:3" />
+        <input type="text" name="nombre_producto" value="<?php echo $prod->nombre_producto; ?>" class="form-control" placeholder="Ingrese el nombre del producto" data-validacion-tipo="requerido|min:3" style="text-align: center"/>
     </div>
 
     <div class="form-group">
         <label>Descripcion del producto</label>
-        <input type="text" name="descripcion_producto" value="<?php echo $prod->descripcion_producto; ?>" class="form-control" placeholder="Descripción del producto" data-validacion-tipo="requerido|min:3" />
+        <textarea rows="4" cols="50" name="descripcion_producto" value="<?php echo $prod->descripcion_producto; ?>" class="form-control" placeholder="Descripción del producto" data-validacion-tipo="requerido|min:3" style="text-align: center"><?php echo $prod->descripcion_producto; ?></textarea>
     </div>
 
     <div class="form-group">

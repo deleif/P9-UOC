@@ -137,5 +137,5 @@ require_once 'model/conexion.php';
 			die($e->getMessage());
 		}
     }
-    }
+}
 ?>

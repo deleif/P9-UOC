@@ -66,9 +66,10 @@
                         <a class="nav-link" href = '?c=Web&a=Admin'>Administración<span class="sr-only">(current)</span></a>
                     </li>
                 </ul>
+                <?php if(empty($_SESSION['nombre_usuario'])){ ?>
                 <button style="margin-right: 1%" type="button" onclick="location.href = '?c=Web&a=Login_usuario'" class="btn btn-success">Inicio sesión</button>
                 <button type="button" onclick="location.href = '?c=Web&a=Registro_usuario'" class="btn btn-danger">Registrarse</button>
-         
+                <?php } ?>
         </nav>
 
         <!--CUERPO CONTENEDOR-->

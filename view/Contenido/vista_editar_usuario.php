@@ -16,12 +16,12 @@
     
     <div class="form-group">
         <label>Username</label>
-        <input type="text" name="nombre_usuario" value="<?php echo $user->nombre_usuario; ?>" class="form-control" placeholder="Ingrese su usuario"/>
+        <input type="text" name="nombre_usuario" value="<?php echo $user->nombre_usuario; ?>" class="form-control" placeholder="Ingrese su usuario" style="text-align: center"/>
     </div>
 
     <div class="form-group" >
         <label>Password</label>
-        <input type="password" name="password_usuario" value="<?php echo $user->password_usuario; ?>" class="form-control" placeholder="Ingrese su contraseña"/>
+        <input type="password" name="password_usuario" value="<?php echo $user->password_usuario; ?>" class="form-control" placeholder="Ingrese su contraseña" style="text-align: center"/>
     </div>
     
     <hr/>

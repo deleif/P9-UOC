@@ -1,6 +1,6 @@
-<h1>ADMINISTRACION</h1><br><hr>
+<br><h1>ADMINISTRACION</h1><br>
 
-<h4>GESTIÓN DE COMENTARIOS</h4>
+<h4>GESTIÓN DE COMENTARIOS</h4><br>
 
 <table class="table table-striped">
     <thead>

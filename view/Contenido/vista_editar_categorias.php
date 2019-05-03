@@ -37,16 +37,18 @@
 <hr>
 <br>
 
-<h4>AÑADIR NUEVA CATEGORÍA</h4>
+<br><h4>AÑADIR NUEVA CATEGORÍA</h4><br>
 
+<div class="row justify-content-center" >
 <form id="frm-categoria" action="?c=Web&a=Insertar_Categoria" method="post" enctype="multipart/form-data" >
-   
+
     <div class="form-group">    
     <label>Descripción de la categoría</label>
-        <input type="text" name="descripcion_categoria" value="<?php echo $newcat->descripcion_categoria; ?>" class="form-control" placeholder="Introduce el nombre de la categoría"  />
+        <input type="text" name="descripcion_categoria" value="<?php echo $newcat->descripcion_categoria; ?>" class="form-control" placeholder="Nombre de la categoría" style="text-align: center" />
     </div>
 
     <div class="text-center">
         <button class="btn btn-success">Guardar</button>
     </div>
 </form>
+</div><br>
