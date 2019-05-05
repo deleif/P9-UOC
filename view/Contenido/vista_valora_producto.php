@@ -4,6 +4,7 @@
 
 
 <div class="row">
+
   <div class=".col-lg-auto col-centrada "  >
   <br>
   <div class="card bg-light" style="width: 18rem;">  
@@ -11,7 +12,8 @@
 
   <h5 class="card-title"><?php echo $prodsel->nombre_producto; ?></h5>
   <h6 class="card-subtitle mb-2 text-muted"><?php echo $prodsel->id_categoria; ?></h6>
-    
+
+      
     <table class="table  ">
     <tbody>    
 
@@ -69,6 +71,7 @@
                     }
                 }
             }            
+            
             ?>
 
 
@@ -94,7 +97,7 @@
         <td><?php echo $r->valoracion_producto;; ?></td>
         </tr>
         <tr>
-        <td><small>Puntuación del usuario:  <?php stars($r->puntos_producto_usuario); ?></smal></td>	
+        <td><small>Puntuación del usuario: </smal> <?php stars($r->puntos_producto_usuario); ?></td>	
         </tr>
 
         <tr>
