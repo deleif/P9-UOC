@@ -1,4 +1,10 @@
 <h1 class="page-header">Productos</h1>
+<?php
+    if(isset($_SESSION["errorvaloracion"])){
+        echo "<h4>".$_SESSION["errorvaloracion"]."</h4>";
+        $_SESSION["errorvaloracion"] = "";  
+    }
+?>
 
 <div class="row">
 <?php foreach($this->productos->ListarProductos() as $r): ?>

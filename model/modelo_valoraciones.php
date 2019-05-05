@@ -18,19 +18,7 @@ require_once 'model/conexion.php';
             }
         }
         public function Votacion(Valoraciones $data){
-            $sql2= "SELECT id_usuario FROM votaciones_producto WHERE id_usuario= '$data->id_usuario' AND id_producto='$data->id_producto'";
-            $stm = $this->pdo->prepare($sql2);
-            $stm ->execute();
-            if($stm->fetchColumn()>0){
-                
-                ?> <a class="nav-link" href='?c=Web&a=Crud'">< VOLVER A PRODUCTOS</a> <h2> <?php
-                
-                die(print("El usuario ha intentado valorar un producto dos veces")); ?> </h2>
-                
-                <?php
-                
-            }else{
-                
+ 
                 try{
                     
                 $sql = "INSERT INTO votaciones_producto (id_usuario, id_producto, puntos_producto_usuario,valoracion_producto) 
@@ -46,13 +34,11 @@ require_once 'model/conexion.php';
                     );
                     
                     } catch (Exception $e) {
-                        die($e->getMessage());
-                    
-                        
-                    }
-            }
-        }
-        
+                        $_SESSION['errorvaloracion'] ="Error en votación. <br>Has intentado votar el mismo producto dos veces.";			
+                        header("Location: index.php?c=Web&a=ValorarProducto&id_producto=<?php echo $r->id_producto; ?>");
+                      }
+            
+        }        
         public function buscar_id_usuario($nombre_usuario){
             
                 try{
