@@ -1,4 +1,4 @@
-#container {
+    #container {
     height: 100%;
     width: 98%;
     margin-top: 0%;
@@ -67,7 +67,7 @@ header {
     overflow: hidden;
 }
 
-header video {
+.table header video {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -113,4 +113,3 @@ header a:hover {
 
 header a {
     color: white;
-}
