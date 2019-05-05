@@ -1,5 +1,6 @@
 <LINK REL=StyleSheet HREF="assets/css/estilo_estrellas.css" TYPE="text/css" MEDIA=screen>
 <LINK REL=StyleSheet HREF="assets/css/estilo_comentarios.css" TYPE="text/css" MEDIA=screen>
+<link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css">
 
 
 <div class="row">
@@ -56,8 +57,19 @@
     </div> 
 </div> 
 </div>  
-<br></br>
+<br><br>
 
+            <?php
+            function stars($rating){
+                for($i = 0; $i < 5; $i++){
+                    if($i < $rating){
+                        echo "<i class='fa fa-star glow'></i>";
+                    } else {
+                        echo "<i class='fa fa-star gris'></i>";
+                    }
+                }
+            }            
+            ?>
 
 
 <div class="row">
@@ -82,8 +94,9 @@
         <td><?php echo $r->valoracion_producto;; ?></td>
         </tr>
         <tr>
-        <td><small>Puntuación del usuario:  <?php echo $r->puntos_producto_usuario; ?></smal></td>	
+        <td><small>Puntuación del usuario:  <?php stars($r->puntos_producto_usuario); ?></smal></td>	
         </tr>
+
         <tr>
             <br>
             <br>
@@ -98,3 +111,6 @@
 <?php endforeach; ?>
 </div>
 </div>
+
+
+
