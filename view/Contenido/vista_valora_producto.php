@@ -64,7 +64,7 @@
   <div class=".col-lg-auto col-centrada "  >
 <div class="bg-secondary">
 <br>
-<h4 class="text-white">Opiniones de nuestros usuarios</h4>
+<h4 class="text-white">&nbsp; Opiniones de nuestros usuarios &nbsp;</h4>
 <br>
 </div>
 
