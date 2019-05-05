@@ -65,7 +65,9 @@ class WebControlador{
 		$user = new Usuario();
 		
         $user->nombre_usuario = $_REQUEST['nombre_usuario'];
-        $user->password_usuario = $_REQUEST['password_usuario'];
+        $pwd = $_REQUEST['password_usuario'];
+        $password_usuario = sha1($pwd);
+        $user->password_usuario = $password_usuario;
        	$this->usuario->Registrar($user);
         
         echo "Usuario registrado con exito, <a href='index.php'>volver</a>";
@@ -76,7 +78,9 @@ class WebControlador{
 		$user = new Usuario();
 		
         $user->nombre_usuario = $_REQUEST['nombre_usuario'];
-        $user->password_usuario = $_REQUEST['password_usuario'];        
+        $pwd = $_REQUEST['password_usuario'];
+        $password_usuario = sha1($pwd);
+        $user->password_usuario = $password_usuario;        
 		
 		$this->usuario->Validar($user);
 
@@ -305,13 +309,10 @@ class WebControlador{
     }
 
     public function Votar(){
-        require_once 'model/modelo_valoraciones.php';
-        require_once 'model/modelo_usuarios.php';
 
         $alm= new Valoraciones();
         $usu= new Usuario();
-        
-        
+
                 $usu = $this->valoraciones->buscar_id_usuario($_SESSION['nombre_usuario']);
                 
                 $alm->id_usuario = $usu->id_usuario;
