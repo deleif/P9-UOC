@@ -172,13 +172,34 @@ class WebControlador{
 
     }
 
+    
+    
+    /*
+	public function Guardar_usuarios(){
+
+
+		$user = new Usuario();
+		
+        $user->nombre_usuario = $_REQUEST['nombre_usuario'];
+        $pwd = $_REQUEST['password_usuario'];
+        $password_usuario = sha1($pwd);
+        $user->password_usuario = $password_usuario;
+       	$this->usuario->Registrar($user);
+        
+        echo "Usuario registrado con exito, <a href='index.php'>volver</a>";
+	}
+	
+    */
+    
     public function Guardar_Usuario(){
 
         $user = new Usuario();
         
         $user->id_nivel = $_REQUEST['id_nivel'];
         $user->nombre_usuario = $_REQUEST['nombre_usuario'];
-        $user->password_usuario = $_REQUEST['password_usuario'];
+        $pwd = $_REQUEST['password_usuario'];
+        $password_usuario = sha1($pwd);
+        $user->password_usuario = $password_usuario;        
         $user->id_usuario = $_REQUEST['id_usuario'];
 
         $this->usuario->Actualizar_usuario($user);
