@@ -16,5 +16,10 @@
     <div class="text-center">
         <button class="btn btn-success">Acceder</button>
     </div>
+    <?php
+        if(isset($_SESSION["erroracceso"])){
+        echo "<p><small>".$_SESSION["erroracceso"]."</P>";
+        $_SESSION["erroracceso"] = "";                             }
+    ?>
 </form>
 </div><br>
