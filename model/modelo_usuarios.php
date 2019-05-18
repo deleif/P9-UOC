@@ -38,7 +38,8 @@ class Usuario{
 			);
 		} catch (Exception $e) {
 
-			die($e->getMessage());
+			$_SESSION['errorregistro'] ="Error en registro. Vuelva a introducir los datos.";			
+			header("Location: index.php?c=web&a=Registro_usuario");   
 		}
 	}
 	
@@ -61,7 +62,8 @@ class Usuario{
 			header("Location: index.php");
 
 		}else{
-			echo "Usuario no registrado.";  
+			$_SESSION['erroracceso'] ="Error en acceso. Vuelva a introducir sus credenciales.";			
+			header("Location: index.php?c=web&a=Login_Usuario");   
 		} 
 	}
 

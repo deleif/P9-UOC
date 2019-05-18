@@ -15,6 +15,11 @@
                     <input type="password" class="form-control" id="password2" placeholder="Repite la contraseña" data-validacion-tipo="requerido|min:3" style="text-align: center">
                 </div><hr/>
                 <button type="submit" class="btn btn-success">Submit</button>
+                <?php
+                if(isset($_SESSION["errorregistro"])){
+                echo "<p><small>".$_SESSION["errorregistro"]."</P>";
+                $_SESSION["errorregistro"] = "";                             }
+                 ?>
             </form>
         </div><br>
            
