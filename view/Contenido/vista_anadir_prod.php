@@ -8,7 +8,7 @@
         <label>Categoría cerveza</label>
             <select name="id_categoria" value="<?php echo $prod->id_categoria; ?>" class="form-control" placeholder="Seleccione una categoría" >
             <?php foreach($this->categorias->ListarTipoCategorias() as $r): ?>
-                <option value="a href="?c=Web&a=VerProductosCategorias&id_categoria=<?php echo $r->id_categoria; ?> "><?php echo $r->descripcion_categoria; ?></option> 
+                <option value =<?php echo $r->id_categoria; ?> "><?php echo $r->descripcion_categoria; ?></option> 
                 <?php endforeach; ?>   
             </select>
     </div>    
