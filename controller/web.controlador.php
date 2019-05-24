@@ -70,7 +70,7 @@ class WebControlador{
         $user->password_usuario = $password_usuario;
        	$this->usuario->Registrar($user);
         
-        echo "Usuario registrado con exito, <a href='index.php'>volver</a>";
+        header("Location: index.php?c=Web&a=Login_usuario");
 	}
 	
 	public function Iniciar_sesion(){
