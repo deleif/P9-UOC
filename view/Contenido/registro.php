@@ -1,4 +1,4 @@
-<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
 
 <br><h1>REGISTRAR NUEVO USUARIO</h1><br>
         <div class="row justify-content-center" >
