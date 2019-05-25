@@ -36,6 +36,7 @@ class Usuario{
                     $data->nombre_usuario,
                     $data->password_usuario)
 			);
+			header("Location: index.php?c=Web&a=Login_usuario");
 		} catch (Exception $e) {
 
 			$_SESSION['errorregistro'] ="Error en registro. Vuelva a introducir los datos.";			

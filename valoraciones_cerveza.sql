@@ -1,6 +1,6 @@
 -- MySQL dump 10.13  Distrib 5.7.17, for Win64 (x86_64)
 --
--- Host: 192.168.1.41    Database: valoraciones_cerveza
+-- Host: localhost    Database: valoraciones_cerveza
 -- ------------------------------------------------------
 -- Server version	5.5.5-10.1.26-MariaDB
 
@@ -26,7 +26,7 @@ CREATE TABLE `categorias` (
   `id_categoria` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion_categoria` varchar(250) NOT NULL,
   PRIMARY KEY (`id_categoria`)
-) ENGINE=InnoDB AUTO_INCREMENT=100001 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -35,7 +35,7 @@ CREATE TABLE `categorias` (
 
 LOCK TABLES `categorias` WRITE;
 /*!40000 ALTER TABLE `categorias` DISABLE KEYS */;
-INSERT INTO `categorias` VALUES (1,'Pale Lager'),(2,'Pilsner'),(3,'Pale Ale');
+INSERT INTO `categorias` VALUES (1,'Pale Lager'),(2,'Pilsner'),(3,'Pale Ale'),(4,'Sin Categoría');
 /*!40000 ALTER TABLE `categorias` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -51,7 +51,7 @@ CREATE TABLE `nivel` (
   `descripcion_nivel` varchar(250) NOT NULL,
   `ponderacion` decimal(10,2) NOT NULL,
   PRIMARY KEY (`id_nivel`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `productos` (
 
 LOCK TABLES `productos` WRITE;
 /*!40000 ALTER TABLE `productos` DISABLE KEYS */;
-INSERT INTO `productos` VALUES (1,1,'Heineken','Cerveza de tipo Lager y estilo Pilsen de color amarillo claro y brillante, con una espuma blanca intensa y cremosa.','',3,16,3.90,'assets/images/heineken.png'),(2,1,'Carlsberg','Bien proporcionada, con sabor a lúpulo, grano de trigo, pino, acedera y manzanas de verano danesas.','',1,3,2.14,'assets/images/calsberg.png'),(3,1,'Foster','Cerveza extremadamente ligera, sin cuerpo, con demasiado carbónico y con un sabor dulce.','',0,0,0.00,'assets/images/foster.png'),(4,2,'Warsteiner','Ligera y de suave carbonatación, donde detectar gran presencia de la malta y acabado con cierto amargor.','',0,0,0.00,'assets/images/warsteiner.png'),(5,2,'Bitburger ',' Se aprecia en la copa que el carbónico es grueso y abundante, dando cierto punto de refresco al conjunto','',0,0,0.00,'assets/images/bitburger.png'),(6,2,'Beck\'s','Cerveza con poca espuma, muy blanca, y que dura muy poco en la copa, de color amarillo pálido.','',0,0,0.00,'assets/images/becks.png'),(7,3,'Citra Cascade','Tiene un nivel de amargor moderado, y resulta ideal para hacer prácticas como el dry-hopping o el hopback','',1,5,3.57,'assets/images/citra.png'),(8,3,'Ambar IPA','Destaca por la complejidad de sabores y aromas donde predominan las notas florales, cítricas y a frutas tropicales','',0,0,0.00,'assets/images/ambar.png'),(9,3,'Moritz BaPA','Aromática, sedosa y muy fácil de beber. Elaborada con levadura de alta fermentación con un perfil muy afrutado, una mezcla de malta de cebada, malta de trigo y copos de avena','',0,0,0.00,'assets/images/moritz.png');
+INSERT INTO `productos` VALUES (1,1,'Heineken','Cerveza de tipo Lager y estilo Pilsen de color amarillo claro y brillante, con una espuma blanca intensa y cremosa.','',0,0,0.00,'assets/images/heineken.png'),(2,1,'Carlsberg','Bien proporcionada, con sabor a lúpulo, grano de trigo, pino, acedera y manzanas de verano danesas.','',0,0,0.00,'assets/images/calsberg.png'),(3,1,'Foster','Cerveza extremadamente ligera, sin cuerpo, con demasiado carbónico y con un sabor dulce.','',0,0,0.00,'assets/images/foster.png'),(4,2,'Warsteiner','Ligera y de suave carbonatación, donde detectar gran presencia de la malta y acabado con cierto amargor.','',0,0,0.00,'assets/images/warsteiner.png'),(5,2,'Bitburger ',' Se aprecia en la copa que el carbónico es grueso y abundante, dando cierto punto de refresco al conjunto','',0,0,0.00,'assets/images/bitburger.png'),(6,2,'Beck\'s','Cerveza con poca espuma, muy blanca, y que dura muy poco en la copa, de color amarillo pálido.','',0,0,0.00,'assets/images/becks.png'),(7,3,'Citra Cascade','Tiene un nivel de amargor moderado, y resulta ideal para hacer prácticas como el dry-hopping o el hopback','',0,0,0.00,'assets/images/citra.png'),(8,3,'Ambar IPA','Destaca por la complejidad de sabores y aromas donde predominan las notas florales, cítricas y a frutas tropicales','',0,0,0.00,'assets/images/ambar.png'),(9,3,'Moritz BaPA','Aromática, sedosa y muy fácil de beber. Elaborada con levadura de alta fermentación con un perfil muy afrutado, una mezcla de malta de cebada, malta de trigo y copos de avena','',0,0,0.00,'assets/images/moritz.png');
 /*!40000 ALTER TABLE `productos` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -110,9 +110,10 @@ CREATE TABLE `usuario` (
   `nombre_usuario` varchar(250) NOT NULL,
   `password_usuario` varchar(250) NOT NULL,
   PRIMARY KEY (`id_usuario`),
+  UNIQUE KEY `nombre_usuario_UNIQUE` (`nombre_usuario`),
   KEY `id_nivel` (`id_nivel`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`id_nivel`) REFERENCES `nivel` (`id_nivel`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -121,7 +122,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,3,'javier','jc.1'),(2,3,'araceli','ar.2'),(3,2,'daniel','a'),(4,1,'vicent','vi.4'),(5,1,'dleiva','a'),(7,4,'Admin','a');
+INSERT INTO `usuario` VALUES (16,4,'Admin','86f7e437faa5a7fce15d1ddcb9eaeaea377667b8');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -152,7 +153,6 @@ CREATE TABLE `votaciones_producto` (
 
 LOCK TABLES `votaciones_producto` WRITE;
 /*!40000 ALTER TABLE `votaciones_producto` DISABLE KEYS */;
-INSERT INTO `votaciones_producto` VALUES (1,1,5.00,7.00,5.00,''),(2,1,5.00,7.00,5.00,''),(3,1,2.00,2.40,1.71,''),(5,2,3.00,3.00,2.14,''),(5,7,5.00,5.00,3.57,'');
 /*!40000 ALTER TABLE `votaciones_producto` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
@@ -250,4 +250,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-28 20:42:59
+-- Dump completed on 2019-05-19 22:05:21
