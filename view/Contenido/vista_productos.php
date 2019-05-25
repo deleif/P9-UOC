@@ -1,3 +1,10 @@
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.expander.js"></script>
+<script type="text/javascript" src="assets/js/jquery.expander.config.js"></script>
+
+
+
 <h1 class="page-header">Productos</h1>
 <?php
     if(isset($_SESSION["errorvaloracion"])){
@@ -5,6 +12,7 @@
         $_SESSION["errorvaloracion"] = "";  
     }
 ?>
+
 
 <div class="row">
 <?php foreach($this->productos->ListarProductos() as $r): ?>
@@ -21,10 +29,16 @@
     <tbody>    
 
         <tr>
-            <td><?php echo $r->descripcion_producto; ?></td>		
+            <td>
+            <div class="expandDiv">
+            <?php echo $r->descripcion_producto; ?>        
+            </div>
+            </div>
+
+            </td>		
         </tr>
         <tr>
-            <td><img src="<?php echo $r->ruta_foto;?>" alt="" /></td>
+            <td ><img src="<?php echo $r->ruta_foto;?>" alt="" /></td>
         </tr>
         <tr>
 			<td> <small>Valoración media:</small> <h5><?php echo $r->puntos_media; ?></h5>
@@ -44,3 +58,5 @@
 </div> 
 <?php endforeach; ?>
 </div>  
+
+

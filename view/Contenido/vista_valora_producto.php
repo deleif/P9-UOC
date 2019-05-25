@@ -84,7 +84,8 @@
 </div>
 
 <?php foreach($this->valoraciones->buscar_valoracion_por_producto($prodsel->id_producto) as $r): ?>
-<table class="table comentarios table-borderless table-responsive ">   
+<div class="table-responsive">
+<table class="table comentarios table-borderless ">   
     <tbody>
     
         <tr>
@@ -108,7 +109,8 @@
         
     </tbody>
     
-</table> 
+</table>
+</div>
 
 
 <?php endforeach; ?>

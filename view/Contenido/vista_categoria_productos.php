@@ -1,4 +1,6 @@
-
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="assets/js/jquery.expander.js"></script>
+<script type="text/javascript" src="assets/js/jquery.expander.config.js"></script>
 
 <div class="row">
 <?php foreach($this->productos->ObtenerProductoCategoria($_REQUEST['id_categoria']) as $r): ?>
@@ -16,7 +18,11 @@
     <tbody>    
 
         <tr>
-            <td><?php echo $r->descripcion_producto; ?></td>		
+            <td>
+                <div class="expandDiv">
+                <?php echo $r->descripcion_producto; ?>
+                </div>
+            </td>		
         </tr>
         <tr>
             <td><img src="<?php echo $r->ruta_foto;?>" alt="" /></td>

@@ -3,9 +3,7 @@
 <br><h1>REGISTRAR NUEVO USUARIO</h1><br>
         <div class="row justify-content-center" >
 
-        <script>
-
-        
+        <script>      
             function validar(frm) {
                 if (frm.password_usuario.value != frm.password2.value) {
                     swal("Error", "Las contraseñas no coinciden", "error");
@@ -13,10 +11,6 @@
                 }
             }
         </script>
-
-
-        
-
 			<form id="frm" name="frm"  onsubmit="return validar(this)" action="?c=Web&a=Guardar_usuarios" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                     <label>Nuevo usuario</label>
@@ -34,8 +28,9 @@
 
                 <?php
                 if(isset($_SESSION["errorregistro"])){
-                echo "<p><small>".$_SESSION["errorregistro"]."</P>";
-                $_SESSION["errorregistro"] = "";                             }
+                    echo "<p><small>".$_SESSION["errorregistro"]."</P>";
+                    $_SESSION["errorregistro"] = "";                             
+                }
                  ?>
             </form>
         </div><br>
